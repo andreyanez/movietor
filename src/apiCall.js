@@ -1,6 +1,6 @@
 import axios from 'axios';
 const API_TOKEN = import.meta.env.VITE_API_TOKEN;
-const API_URL = `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc`;
+const API_URL = `https://api.themoviedb.org/3`;
 
 // AXIOS GLOBALS
 // axios.defaults.baseURL = 'https://api.spotify.com/v1';
@@ -8,7 +8,18 @@ axios.defaults.headers['Authorization'] = `Bearer ${API_TOKEN}`;
 axios.defaults.headers['Content-Type'] = 'application/json';
 
 export const getMovies = () => {
-	return axios({ method: 'get', url: API_URL, params: { page: 2 } });
+	return axios({
+		method: 'get',
+		url: `${API_URL}/discover/movie?sort_by=popularity.desc`,
+		params: { page: 1 },
+	});
+};
+
+export const getMovieById = movieId => {
+	return axios({
+		method: 'get',
+		url: `${API_URL}/movie/${movieId}&append_to_response=videos,images`,
+	});
 };
 
 //POST REQUEST
@@ -23,7 +34,6 @@ export const getMovies = () => {
 
 // AXIOS INSTANCE
 const axiosMovieInstance = axios.create({
-	// Other custom settings
 	baseURL: 'https://jsonplaceholder.typicode.com',
 });
 // axiosInstance.get('/comments').then(res => showOutput(res));

@@ -35,7 +35,7 @@ export default {
 		<ul class="flex flex-wrap container mx-auto gap-y-10 gap-x-1 justify-evenly">
 			<li v-for="movie in movies" :key="movie.id" class="card basis-1/4 bg-base-100 shadow-xl">
 				<figure>
-					<img :src="`https://image.tmdb.org/t/p/w1280/${movie.poster_path}`" alt="Shoes" />
+					<img :src="`https://image.tmdb.org/t/p/w1280/${movie.poster_path}`" :alt="movie.title" />
 				</figure>
 				<div class="card-body">
 					<h2 class="card-title">{{ movie.title }}</h2>
