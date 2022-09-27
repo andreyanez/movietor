@@ -1,6 +1,6 @@
 <script>
-import { getMovies } from '../apiCall.js';
-import { ref, onMounted } from 'vue';
+import { getMovies } from '../apiCall';
+import { ref } from 'vue';
 export default {
 	setup() {
 		const movies = ref([]);
@@ -41,7 +41,11 @@ export default {
 					<h2 class="card-title">{{ movie.title }}</h2>
 					<p>{{ movie.overview.substring(0, 100) + '...' }}</p>
 					<div class="card-actions justify-end">
-						<button class="btn btn-primary">More details</button>
+						<router-link
+							class="btn btn-primary"
+							:to="{ name: 'MovieInfo', params: { id: movie.id } }"
+							>More details</router-link
+						>
 					</div>
 				</div>
 			</li>
