@@ -1,13 +1,13 @@
 <script>
 import { getMovieById } from '../apiCall';
 import { useRoute } from 'vue-router';
-import { ref, onMounted } from 'vue';
+import { ref, onBeforeMount } from 'vue';
 export default {
 	setup() {
 		const route = useRoute();
 		const movie = ref({});
 
-		onMounted(async () => {
+		onBeforeMount(async () => {
 			try {
 				const movieData = await getMovieById(route.params.id);
 				movie.value = movieData.data;

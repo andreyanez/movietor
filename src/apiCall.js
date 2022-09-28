@@ -1,24 +1,26 @@
 import axios from 'axios';
 const API_TOKEN = import.meta.env.VITE_API_TOKEN;
+const API_KEY = import.meta.env.VITE_API_KEY;
 const API_URL = `https://api.themoviedb.org/3`;
 
 // AXIOS GLOBALS
 // axios.defaults.baseURL = 'https://api.spotify.com/v1';
-axios.defaults.headers['Authorization'] = `Bearer ${API_TOKEN}`;
+// axios.defaults.headers['Authorization'] = `Bearer ${API_TOKEN}`;
 axios.defaults.headers['Content-Type'] = 'application/json';
 
 export const getMovies = () => {
 	return axios({
 		method: 'get',
-		url: `${API_URL}/discover/movie?sort_by=popularity.desc`,
-		params: { page: 1 },
+		url: `${API_URL}/discover/movie?&sort_by=popularity.desc`,
+		params: { page: 1, api_key: API_KEY },
 	});
 };
 
 export const getMovieById = movieId => {
 	return axios({
 		method: 'get',
-		url: `${API_URL}/movie/${movieId}&append_to_response=videos,images`,
+		url: `${API_URL}/movie/${movieId}?&append_to_response=images`,
+		params: { api_key: API_KEY },
 	});
 };
 
