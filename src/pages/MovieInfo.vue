@@ -46,7 +46,7 @@ export default {
 					<p class="leading-relaxed mt-6 pb-5 border-b-2 border-gray-200 mb-5">
 						{{ movie.overview }}
 					</p>
-					<p>
+					<p v-if="movie.homepage">
 						Movie page: <a :href="movie.homepage">{{ movie.homepage }}</a>
 					</p>
 				</div>
