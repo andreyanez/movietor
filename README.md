@@ -1,4 +1,4 @@
-# My Awesome Project
+# Movietor!
 
 Small movie app made for learning purposes. See details about the latests and most popular movies posted on the The Movie Database
 
